@@ -1,0 +1,132 @@
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-size: 7.5vmin;
+  flex-direction: column;
+  background-color: #fafafa;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: 12vmin;
+  color: #203346;
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4%;
+  flex-direction: row;
+  margin-bottom: 14px;
+}
+
+.score,
+.high-score {
+  font-size: 4vmin;
+  width: 100%;
+  font-weight: 800;
+  width: 34vmin;
+  border-radius: 1vmin;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.score {
+  background-color: #cc2936;
+  color: #fff;
+}
+
+.high-score {
+  background-color: #08415c;
+  color: #fff;
+}
+
+#game-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  background-color: #cfe7e0;
+  gap: var(--cell-gap);
+  border: 1vmin;
+  padding: var(--cell-gap);
+  border-radius: 3vmin;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.cell {
+  background-color: #bbd9d9;
+  border-radius: 2vmin;
+}
+
+img {
+  width: 38px;
+  height: 38px;
+  background-color: #cc2936;
+  padding: 0.6vmin;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 18px;
+  transition: 0.2s;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.controls {
+  display: flex;
+  gap: 1vmin;
+}
+
+.tile {
+  --x: 0;
+  --y: 0;
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  width: var(--cell-size);
+  aspect-ratio: 1;
+
+  background-color: var(--background-tile);
+  color: var(--tile-text-color);
+
+  box-shadow: 0 1.4vmin 0 var(--tile-shadow);
+  border-radius: 1vmin;
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+
+  top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+
+  z-index: 2;
+
+  animation: show 0.2s ease;
+  transition: 0.1s ease;
+}
+
+@keyframes show {
+  from {
+    opacity: 0.3;
+    transform: scale(0);
+  }
+}
