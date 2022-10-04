@@ -8,17 +8,19 @@ const score = document.getElementById("score");
 const high_score = document.getElementById("high-score");
 let resetButton;
 
-(function defineHighScoresStorage() {
-  let HIGH_SCORE;
-
-  if (localStorage.getItem("high_score") == "null") {
+function defineHighScoresStorage() {
+  if (!localStorage.getItem("high_score")) {
     HIGH_SCORE = parseInt(localStorage.setItem("high_score", 0));
   } else {
     HIGH_SCORE = parseInt(localStorage.getItem("high_score"));
   }
+}
 
-  high_score.innerText = HIGH_SCORE;
-})();
+window.addEventListener("load", () => {
+  defineHighScoresStorage();
+
+  high_score.innerText = localStorage.getItem("high_score");
+});
 
 (function addReset() {
   resetButton = document.createElement("img");
