@@ -10,9 +10,9 @@ let resetButton;
 
 function defineHighScoresStorage() {
   if (!localStorage.getItem("high_score")) {
-    HIGH_SCORE = parseInt(localStorage.setItem("high_score", 0));
+    parseInt(localStorage.setItem("high_score", 0));
   } else {
-    HIGH_SCORE = parseInt(localStorage.getItem("high_score"));
+    parseInt(localStorage.getItem("high_score"));
   }
 }
 
