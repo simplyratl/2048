@@ -7,7 +7,6 @@ let grid;
 const score = document.getElementById("score");
 const high_score = document.getElementById("high-score");
 let resetButton;
-let rewindButton;
 
 (function defineHighScoresStorage() {
   let HIGH_SCORE;
@@ -21,14 +20,6 @@ let rewindButton;
   high_score.innerText = HIGH_SCORE;
 })();
 
-(function addRewind() {
-  rewindButton = document.createElement("img");
-  rewindButton.src = "./arrow.svg";
-  rewindButton.alt = "Rewind";
-
-  document.getElementById("rewind").append(rewindButton);
-})();
-
 (function addReset() {
   resetButton = document.createElement("img");
   resetButton.src = "./refresh.svg";
@@ -38,7 +29,6 @@ let rewindButton;
 })();
 
 resetButton.addEventListener("click", resetGame);
-rewindButton.addEventListener("click", rewindEvent);
 
 resetGame();
 
@@ -58,7 +48,6 @@ function resetGame() {
 }
 
 function setupInput() {
-  rewind();
   window.addEventListener("keydown", handleInput, { once: true });
 }
 
@@ -115,15 +104,6 @@ async function handleInput(e) {
   }
 
   setupInput();
-}
-
-function rewindEvent() {
-  rewind();
-}
-
-function rewind() {
-  console.log(grid.rewindCell == grid.cells);
-  grid.rewindCell = grid.cells;
 }
 
 function moveUp() {
